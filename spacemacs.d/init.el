@@ -31,21 +31,32 @@ values."
      version-control
      spell-checking
      auto-completion
-     syntax-checking
+     (syntax-checking :variables syntax-checking-enable-tooltips nil)
      org
-     emacs-lisp
      osx
+
+     emacs-lisp
+     common-lisp
      ruby
+     ruby-on-rails
      javascript
      markdown
+
+     ;; my layers
+     directory
+     tabbing
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
-   dotspacemacs-additional-packages '(dired-subtree)
+   dotspacemacs-additional-packages
+   '(
+     haml-mode
+     jade-mode
+     )
    ;; A list of packages and/or extensions that will not be install and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(rainbow-delimiters)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'. (default t)
@@ -81,11 +92,11 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(material
+   dotspacemacs-themes '(solarized-dark
+                         solarized-light
+                         material
                          spacemacs-dark
                          spacemacs-light
-                         solarized-light
-                         solarized-dark
                          leuven
                          monokai
                          zenburn)
@@ -197,31 +208,41 @@ values."
 It is called immediately after `dotspacemacs/init'.  You are free to put any
 user code."
 
-  ;; set C-tab to tab with "when I say tab, I mean tab!" quoted-insert
-  ;; unsetting local binding for this in init-org-mode.el
-  (global-set-key (kbd "<C-tab>") 'tab-to-tab-stop))
+  )
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
  This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
 
-  (add-hook 'dired-mode-hook 'jacobmoe-org-mode-setup)
-  (add-hook 'dired-mode-hook 'jacobmoe-dired-mode-setup))
+  (jacobmoe-evil-mode-config)
+  (add-hook 'enh-ruby-mode-hook 'jacobmoe-enh-mode-init)
+  (add-hook 'ruby-mode-hook 'jacobmoe-ruby-mode-init)
+  (add-hook 'org-mode-hook 'jacobmoe-org-mode-init))
 
-;; should this be in a layer?
-(defun jacobmoe-dired-mode-setup ()
-  "run as hook for dired-mode"
+;; ---- my customization ------------------------------------------------------
 
-  (dired-hide-details-mode t)
-  (define-key dired-mode-map (kbd "<tab>") 'dired-subtree-toggle)
-  (define-key dired-mode-map (kbd "q") 'dired-subtree-remove))
+(defun jacobmoe-evil-mode-config ()
+  ;; Make evil-mode up/down operate in screen lines instead of logical lines
+  (define-key evil-motion-state-map "j" 'evil-next-visual-line)
+  (define-key evil-motion-state-map "k" 'evil-previous-visual-line)
+  ;; Also in visual mode
+  (define-key evil-visual-state-map "j" 'evil-next-visual-line)
+  (define-key evil-visual-state-map "k" 'evil-previous-visual-line))
 
-(defun jacobmoe-org-mode-setup ()
+(defun jacobmoe-org-mode-init ()
   "run as hook for org-mode"
 
   ;; using this binding for tab-to-tab-stop (force a tab)
   (local-unset-key (kbd "<C-tab>")))
+
+(defun jacobmoe-enh-mode-init ()
+  (remove-hook 'before-save-hook 'enh-ruby-mode-set-encoding t))
+
+(defun jaocbmoe-ruby-mode-init ()
+  (setq ruby-insert-encoding-magic-comment nil))
+
+;; ----------------------------------------------------------------------------
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.

@@ -1,0 +1,1 @@
+export LISP_APP_ENV=development

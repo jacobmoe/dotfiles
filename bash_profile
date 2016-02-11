@@ -1,5 +1,3 @@
-alias ll="ls -lahG"
-
 homebrew=/usr/local/bin:/usr/local/sbin
 PATH=$homebrew:$PATH
 PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
@@ -48,7 +46,7 @@ source /usr/local/opt/chruby/share/chruby/chruby.sh
 # enbable auto-switching:
 source /usr/local/opt/chruby/share/chruby/auto.sh
 
-chruby ruby-2.2.3 # set default ruby
+chruby ruby-2.3.0 # set default ruby
 
 # ---- golang ---------------------------------------------------------------
 
@@ -58,6 +56,11 @@ PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
 
 # [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
+# ---- lisp -----------------------------------------------------------------
+
+# for roswell
+export QUICKLISP_HOME="$HOME/quicklisp/"
+
 # ---- python virtualenv settings -------------------------------------------
 
 # pip should only run if there is a virtualenv currently activated
@@ -65,6 +68,7 @@ export PIP_REQUIRE_VIRTUALENV=true
 
 # ---- aliases --------------------------------------------------------------
 
+alias ll="ls -lahG"
 alias em='open -a /Applications/Emacs.app "$@"'
 
 # ---- functions ------------------------------------------------------------
