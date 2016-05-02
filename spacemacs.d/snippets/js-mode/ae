@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# contributor: jacobmoe <jacobmoe@gmail.com>
+# name : function
+# key: ae
+# --
+assert.equal($0)

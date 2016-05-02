@@ -33,6 +33,7 @@ values."
      auto-completion
      (syntax-checking :variables syntax-checking-enable-tooltips nil)
      org
+     finance
      osx
 
      emacs-lisp
@@ -40,11 +41,16 @@ values."
      ruby
      ruby-on-rails
      javascript
+     react
      markdown
+     sql
 
      ;; my layers
      directory
      tabbing
+     jmoe-org
+     jmoe-ruby
+     jmoe-javascript
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -54,6 +60,9 @@ values."
    '(
      haml-mode
      jade-mode
+     yaml-mode
+     sass-mode
+     csv-mode
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(rainbow-delimiters)
@@ -215,10 +224,7 @@ user code."
  This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
 
-  (jacobmoe-evil-mode-config)
-  (add-hook 'enh-ruby-mode-hook 'jacobmoe-enh-mode-init)
-  (add-hook 'ruby-mode-hook 'jacobmoe-ruby-mode-init)
-  (add-hook 'org-mode-hook 'jacobmoe-org-mode-init))
+  (jacobmoe-evil-mode-config))
 
 ;; ---- my customization ------------------------------------------------------
 
@@ -229,18 +235,6 @@ layers configuration. You are free to put any user code."
   ;; Also in visual mode
   (define-key evil-visual-state-map "j" 'evil-next-visual-line)
   (define-key evil-visual-state-map "k" 'evil-previous-visual-line))
-
-(defun jacobmoe-org-mode-init ()
-  "run as hook for org-mode"
-
-  ;; using this binding for tab-to-tab-stop (force a tab)
-  (local-unset-key (kbd "<C-tab>")))
-
-(defun jacobmoe-enh-mode-init ()
-  (remove-hook 'before-save-hook 'enh-ruby-mode-set-encoding t))
-
-(defun jaocbmoe-ruby-mode-init ()
-  (setq ruby-insert-encoding-magic-comment nil))
 
 ;; ----------------------------------------------------------------------------
 

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# contributor: jacobmoe <jacobmoe@gmail.com>
+# name : mocha describe
+# key: desc
+# --
+describe('$1', function () {
+  $0
+})

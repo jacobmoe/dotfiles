@@ -1,0 +1,48 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "settings": {
+    "ecmascript": 6,
+    "jsx": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "ecmaFeatures": {
+    "modules": true,
+    "jsx": true
+  },
+  "rules": {
+    "strict": 0,
+    "quotes": 0,
+    "no-underscore-dangle": 0,
+    "new-cap": 0,
+    "semi": 0
+  },
+  "globals": {
+    "React" : true,
+    "$": true,
+    "__dirname": true,
+    "require": true,
+    "module": true,
+    "window": true,
+    "document": true,
+    "console": true,
+    "angular": true,
+    "global": true,
+    "describe": true,
+    "it": true,
+    "assert": true,
+    "before": true,
+    "beforeEach": true,
+    "after": true,
+    "afterEach": true,
+    "inject": true,
+    "sinon": true,
+    "context": true,
+    "_": true
+  }
+}

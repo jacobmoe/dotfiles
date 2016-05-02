@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# contributor: jacobmoe <jacobmoe@gmail.com>
+# name : named function
+# key: fun
+# --
+function $1 ($2) {
+  $0
+}

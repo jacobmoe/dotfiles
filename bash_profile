@@ -61,10 +61,14 @@ PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
 # for roswell
 export QUICKLISP_HOME="$HOME/quicklisp/"
 
-# ---- python virtualenv settings -------------------------------------------
+# ---- python ---------------------------------------------------------------
 
 # pip should only run if there is a virtualenv currently activated
 export PIP_REQUIRE_VIRTUALENV=true
+
+export WORKON_HOME="$HOME/.virtualenvs"
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+source /usr/local/bin/virtualenvwrapper.sh
 
 # ---- aliases --------------------------------------------------------------
 

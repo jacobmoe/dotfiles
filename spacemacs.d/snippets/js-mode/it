@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# contributor: jacobmoe <jacobmoe@gmail.com>
+# name : mocha it block
+# key: it
+# --
+it('$1', function (done) {
+  $0
+})

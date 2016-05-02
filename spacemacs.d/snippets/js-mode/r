@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# contributor: jacobmoe <jacobmoe@gmail.com>
+# name : require
+# key: r
+# --
+require('$0')
