@@ -1,3 +1,5 @@
+# -*- mode: sh -*-
+
 homebrew=/usr/local/bin:/usr/local/sbin
 PATH=$homebrew:$PATH
 PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
@@ -13,11 +15,20 @@ export BUNDLER_EDITOR='emacs'
 RED="\[\033[0;31m\]"
 YELLOW="\[\033[0;33m\]"
 GREEN="\[\033[0;32m\]"
+BLUE="\[\033[0;34m\]"
 
 export CLICOLOR=1
 
 # Set colors to match iTerm2 Terminal Colors
 export TERM=xterm-256color
+
+# ---- screen ---------------------------------------------------------------
+
+screen_for_prompt() {
+  if [ -n "$STY" ]; then
+    echo "[$STY] "
+  fi
+}
 
 # ---- GIT ------------------------------------------------------------------
 
@@ -31,7 +42,9 @@ source /usr/local/etc/bash_completion.d/git-completion.bash
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 
-PS1="$RED\$(date +%H:%M) \w$YELLOW \$(parse_git_branch)$GREEN\$ "
+# ---- prompt --------------------------------------------------------------
+
+PS1="$BLUE\$(screen_for_prompt)$RED\$(date +%H:%M) \w$YELLOW \$(parse_git_branch)$GREEN\$ "
 
 # ---- ruby ----------------------------------------------------------------
 
