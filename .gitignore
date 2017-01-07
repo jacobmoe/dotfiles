@@ -1,3 +1,4 @@
+.DS_Store
 atom/packages/
 atom/.apm/
 atom/blob-store/
