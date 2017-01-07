@@ -59,7 +59,7 @@ source /usr/local/opt/chruby/share/chruby/chruby.sh
 # enbable auto-switching:
 source /usr/local/opt/chruby/share/chruby/auto.sh
 
-chruby ruby-2.3.0 # set default ruby
+chruby ruby-2.3.1 # set default ruby
 
 # ---- golang ---------------------------------------------------------------
 
@@ -77,11 +77,11 @@ export QUICKLISP_HOME="$HOME/quicklisp/"
 # ---- python ---------------------------------------------------------------
 
 # pip should only run if there is a virtualenv currently activated
-export PIP_REQUIRE_VIRTUALENV=true
+# export PIP_REQUIRE_VIRTUALENV=true
 
-export WORKON_HOME="$HOME/.virtualenvs"
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-source /usr/local/bin/virtualenvwrapper.sh
+# export WORKON_HOME="$HOME/.virtualenvs"
+# export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+# source /usr/local/bin/virtualenvwrapper.sh
 
 # ---- aliases --------------------------------------------------------------
 
