@@ -1,0 +1,11 @@
+(defun make-number-grid (width)
+  (interactive "nwidth: ")
+  (save-excursion
+    (let ((y 0))
+      (while (< y width)
+        (let ((x 0))
+          (while (< x width)
+            (setq x (+ x 1))
+            (insert " " (format "%02d" (+ x y)))))
+        (insert "\n")
+        (setq y (+ y 1))))))
