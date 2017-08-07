@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # contributor: jacobmoe <jacobmoe@gmail.com>
-# name : mocha console.log()
+# name : console log
 # key: cl
 # --
 console.log($0)

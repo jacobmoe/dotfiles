@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# contributor: jacobmoe <jacobmoe@gmail.com>
+# name : todo month
+# key: todo-month
+# --
+** $1
+*** TODO pay rent
+*** TODO pay utilities
+**** TODO cricket
+**** TODO optimum
+**** TODO coned
+**** TODO national grid
+*** TODO $0

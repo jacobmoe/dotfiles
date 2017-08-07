@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# contributor: jacobmoe <jacobmoe@gmail.com>
+# name : koa router
+# key: koa-router
+# --
+var Koa = require('koa')
+var Router = require('koa-router')
+
+var app = new Koa()
+var router = new Router()
+
+router.get('/', function (ctx, next) {
+  ctx.status = 200
+  ctx.body = "HELLO, WORLD"
+})
+
+app
+  .use(router.routes())
+  .use(router.allowedMethods())

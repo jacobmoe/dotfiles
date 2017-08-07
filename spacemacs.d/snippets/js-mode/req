@@ -1,8 +1,6 @@
 # -*- mode: snippet -*-
 # contributor: jacobmoe <jacobmoe@gmail.com>
-# name : mocha describe
-# key: desc
+# name : require
+# key: req
 # --
-describe('$1', function () {
-  $0
-})
+const $1 = require('$0')

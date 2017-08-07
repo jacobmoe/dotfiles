@@ -18,6 +18,7 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     nginx
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -30,7 +31,7 @@ values."
      git
      version-control
      spell-checking
-     auto-completion
+     (auto-completion :variables auto-completion-enable-snippets-in-popup t)
      (syntax-checking :variables syntax-checking-enable-tooltips nil)
      org
      finance
@@ -104,9 +105,9 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(solarized-dark
+   dotspacemacs-themes '(material
+                         solarized-dark
                          solarized-light
-                         material
                          spacemacs-dark
                          spacemacs-light
                          leuven
@@ -230,11 +231,11 @@ layers configuration. You are free to put any user code."
   ;; TEMP FIX https://github.com/syl20bnr/spacemacs/issues/7393
   (fset 'xterm-color-unfontify-region 'font-lock-default-unfontify-region)
 
-  (jacobmoe-evil-mode-config))
+  (jmoe-evil-mode-config))
 
 ;; ---- my customization ------------------------------------------------------
 
-(defun jacobmoe-evil-mode-config ()
+(defun jmoe-evil-mode-config ()
   ;; Make evil-mode up/down operate in screen lines instead of logical lines
   (define-key evil-motion-state-map "j" 'evil-next-visual-line)
   (define-key evil-motion-state-map "k" 'evil-previous-visual-line)
@@ -257,7 +258,7 @@ layers configuration. You are free to put any user code."
  '(evil-want-Y-yank-to-eol t)
  '(package-selected-packages
    (quote
-    (yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic slime-company pug-mode minitest hide-comnt restclient ob-http org undo-tree uuidgen osx-dictionary org-projectile org-download livid-mode skewer-mode simple-httpd link-hint git-link flyspell-correct-helm flyspell-correct eyebrowse evil-visual-mark-mode evil-unimpaired evil-ediff eshell-z dumb-jump common-lisp-snippets column-enforce-mode web-beautify tagedit sql-indent smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools rubocop robe reveal-in-osx-finder restart-emacs rbenv inflections pbcopy spinner osx-trash org-repo-todo org-present log4e gntp org-bullets mmm-mode lorem-ipsum launchctl json-snatcher json-reformat jade-mode htmlize parent-mode helm-gitignore request helm-flyspell helm-flx helm-css-scss helm-company haml-mode gnuplot gitignore-mode gitattributes-mode git-timemachine git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ gh-md flycheck-pos-tip flycheck-ledger pkg-info epl flx evil-indent-plus esh-help dired-hacks-utils csv-mode company-web web-completion-data company-statistics pos-tip chruby bracketed-paste packed ac-ispell bind-map yaml-mode xterm-color ws-butler web-mode toc-org spaceline slime ruby-test-mode rspec-mode projectile-rails rake f persp-mode orgit org-pomodoro alert org-plus-contrib multi-term markdown-toc markdown-mode magit-gitflow less-css-mode ledger-mode json-mode js2-refactor multiple-cursors js2-mode js-doc hl-todo help-fns+ projectile helm-c-yasnippet gitconfig-mode git-messenger feature-mode evil-mc evil-magit magit magit-popup iedit eshell-prompt-extras emmet-mode dired-subtree diff-hl company-tern dash-functional tern company-quickhelp coffee-mode bundler auto-yasnippet yasnippet auto-compile ace-jump-helm-line auto-complete avy highlight anzu smartparens flycheck git-gutter git-commit with-editor company helm-core async hydra inf-ruby material-theme window-numbering volatile-highlights vi-tilde-fringe spray smooth-scrolling rainbow-delimiters powerline popwin popup pcre2el paradox page-break-lines open-junk-file neotree move-text macrostep linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-descbinds helm-ag helm google-translate golden-ratio flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-matchit evil-lisp-state evil-jumper evil-indent-textobject evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu elisp-slime-nav define-word clean-aindent-mode buffer-move auto-highlight-symbol auto-dictionary aggressive-indent adaptive-wrap ace-window ace-link evil-leader evil which-key quelpa package-build use-package bind-key s dash spacemacs-theme)))
+    (nginx-mode diminish winum restclient-helm ob-restclient fuzzy company-restclient know-your-http-well yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic slime-company pug-mode minitest hide-comnt restclient ob-http org undo-tree uuidgen osx-dictionary org-projectile org-download livid-mode skewer-mode simple-httpd link-hint git-link flyspell-correct-helm flyspell-correct eyebrowse evil-visual-mark-mode evil-unimpaired evil-ediff eshell-z dumb-jump common-lisp-snippets column-enforce-mode web-beautify tagedit sql-indent smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools rubocop robe reveal-in-osx-finder restart-emacs rbenv inflections pbcopy spinner osx-trash org-repo-todo org-present log4e gntp org-bullets mmm-mode lorem-ipsum launchctl json-snatcher json-reformat jade-mode htmlize parent-mode helm-gitignore request helm-flyspell helm-flx helm-css-scss helm-company haml-mode gnuplot gitignore-mode gitattributes-mode git-timemachine git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ gh-md flycheck-pos-tip flycheck-ledger pkg-info epl flx evil-indent-plus esh-help dired-hacks-utils csv-mode company-web web-completion-data company-statistics pos-tip chruby bracketed-paste packed ac-ispell bind-map yaml-mode xterm-color ws-butler web-mode toc-org spaceline slime ruby-test-mode rspec-mode projectile-rails rake f persp-mode orgit org-pomodoro alert org-plus-contrib multi-term markdown-toc markdown-mode magit-gitflow less-css-mode ledger-mode json-mode js2-refactor multiple-cursors js2-mode js-doc hl-todo help-fns+ projectile helm-c-yasnippet gitconfig-mode git-messenger feature-mode evil-mc evil-magit magit magit-popup iedit eshell-prompt-extras emmet-mode dired-subtree diff-hl company-tern dash-functional tern company-quickhelp coffee-mode bundler auto-yasnippet yasnippet auto-compile ace-jump-helm-line auto-complete avy highlight anzu smartparens flycheck git-gutter git-commit with-editor company helm-core async hydra inf-ruby material-theme window-numbering volatile-highlights vi-tilde-fringe spray smooth-scrolling rainbow-delimiters powerline popwin popup pcre2el paradox page-break-lines open-junk-file neotree move-text macrostep linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-descbinds helm-ag helm google-translate golden-ratio flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-matchit evil-lisp-state evil-jumper evil-indent-textobject evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu elisp-slime-nav define-word clean-aindent-mode buffer-move auto-highlight-symbol auto-dictionary aggressive-indent adaptive-wrap ace-window ace-link evil-leader evil which-key quelpa package-build use-package bind-key s dash spacemacs-theme)))
  '(paradox-github-token t)
  '(send-mail-function (quote mailclient-send-it)))
 (custom-set-faces
@@ -265,5 +266,6 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((((class color) (min-colors 89)) (:foreground "#ffffff" :background "#263238"))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))

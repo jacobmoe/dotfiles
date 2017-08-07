@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# contributor: jacobmoe <jacobmoe@gmail.com>
-# name : mocha beforeEach
-# key: bef
-# --
-beforeEach(function (done) {
-  $0
-})
