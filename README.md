@@ -10,7 +10,7 @@ brew install git-completion
 
 # node
 
-$ brew install node
+brew install node
 
 # emacs
 
@@ -30,7 +30,7 @@ ruby-install
 
 # ledger
 
-$ brew install ledger
+brew install ledger
 
 # link
 
