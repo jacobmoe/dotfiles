@@ -1,6 +1,8 @@
 ## Install
 
 ```bash
+cd ~ && git clone git@github.com:jacobmoe/dotfiles.git
+
 # git
 
 brew install git
@@ -12,7 +14,8 @@ $ brew install node
 
 # emacs
 
-brew install emacs --with-cocoa --srgb
+brew install emacs --HEAD --use-git-head --with-cocoa --srgb
+ln -s /usr/local/Cellar/emacs/HEAD/Emacs.app /Applications
 brew install ag
 brew install ispell
 npm install -g eslint
