@@ -59,11 +59,11 @@ source /usr/local/opt/chruby/share/chruby/chruby.sh
 # enable auto-switching:
 source /usr/local/opt/chruby/share/chruby/auto.sh
 
-chruby ruby-2.3.1 # set default ruby
+chruby ruby-2.4.1 # set default ruby
 
 # ---- golang ---------------------------------------------------------------
 
-# export GOROOT="/usr/local/Cellar/go/1.4.2"
+export GOROOT="/usr/local/Cellar/go/1.8.3"
 export GOPATH="$HOME/code/go"
 PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
 

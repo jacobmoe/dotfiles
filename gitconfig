@@ -2,7 +2,7 @@
   name = Jacob Moeller
   email = jacobmoe@gmail.com
 [core]
-  excludesfile = /Users/jacobmoe/.gitignore_global
+  excludesfile = ~/.gitignore_global
 [mergetool "Kaleidoscope"]
   cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
   trustexitcode = true
