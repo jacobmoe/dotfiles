@@ -120,6 +120,24 @@ function db() {
   esac
 }
 
+function set_docker_machine_from_file() {
+  if [ -e ".docker-machine" ]; then
+    machine_name=$(< .docker-machine)
+
+    if [ "$(docker-machine status $machine_name)" = "Running" ]; then
+      eval $(docker-machine env $machine_name)
+      echo "current docker-machine is $machine_name"
+    else
+      echo -e "docker-machine $machine_name is stopped"
+    fi
+  fi
+}
+
+cd() {
+  builtin cd "$1"
+  set_docker_machine_from_file
+}
+
 # ---- TEMP ----------------------------------------------------------------
 # for algorithms class library
 export CLASSPATH=$HOME/algs4/stdlib.jar:$HOME/algs4/slgs4.jar:$CLASSPATH
@@ -127,3 +145,5 @@ export CLASSPATH=$HOME/algs4/stdlib.jar:$HOME/algs4/slgs4.jar:$CLASSPATH
 # ---- path ----------------------------------------------------------------
 PATH="$HOME/bin:$PATH"
 export PATH
+
+set_docker_machine_from_file

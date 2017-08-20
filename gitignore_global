@@ -6,3 +6,5 @@
 \.DS_Store
 \.tern-port
 *\.restclient
+
+\.docker-machine
