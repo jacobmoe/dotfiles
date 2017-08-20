@@ -134,8 +134,12 @@ function set_docker_machine_from_file() {
 }
 
 cd() {
-  builtin cd "$1"
-  set_docker_machine_from_file
+  if [ $# -eq 0 ]; then
+    builtin cd
+  else
+    builtin cd "$1"
+    set_docker_machine_from_file
+  fi
 }
 
 # ---- TEMP ----------------------------------------------------------------
