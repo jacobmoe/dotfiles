@@ -63,7 +63,7 @@ chruby ruby-2.4.1 # set default ruby
 
 # ---- golang ---------------------------------------------------------------
 
-export GOROOT="/usr/local/Cellar/go/1.8.3"
+# export GOROOT="/usr/local/Cellar/go/1.8.3"
 export GOPATH="$HOME/code/go"
 PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
 
@@ -95,13 +95,13 @@ alias em='open -a /Applications/Emacs.app "$@"'
 # ---- functions ------------------------------------------------------------
 
 # open man page in sublime
-function sman() {
+sman() {
   man "${1}" | col -b | subl
 }
 
 # run sql on a mysql or postgres db without entering the mysql/psql console
 # usage:  db "select * from my_table"
-function db() {
+db() {
   if [ ! -f ./config/database.yml ]; then
     echo "only works from a rails project's root"
     return
@@ -120,7 +120,7 @@ function db() {
   esac
 }
 
-function set_docker_machine_from_file() {
+set_docker_machine_from_file() {
   if [ -e ".docker-machine" ]; then
     machine_name=$(< .docker-machine)
 
