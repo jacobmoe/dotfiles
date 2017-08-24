@@ -63,9 +63,9 @@ chruby ruby-2.4.1 # set default ruby
 
 # ---- golang ---------------------------------------------------------------
 
-export GOROOT="/usr/local/Cellar/go/1.8.3"
+# export GOROOT="/usr/local/Cellar/go/1.8.3"
 export GOPATH="$HOME/code/go"
-PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
+PATH="$PATH:$GOPATH/bin"
 
 # [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
