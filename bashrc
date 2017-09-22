@@ -133,6 +133,21 @@ set_docker_machine_from_file() {
   fi
 }
 
+docker-compose() {
+  if [ -e ".docker-machine" ]; then
+    name=$(< .docker-machine)
+    indicator=$(docker-machine ls --filter name="$name" --format "{{.Active}}")
+
+    if [ "$indicator" == "*" ]; then
+      command docker-compose "$@"
+    else
+      echo -e "current machine is $machine_name but it's not active."
+    fi
+  else
+    command docker-compose "$@"
+  fi
+}
+
 cd() {
   if [ $# -eq 0 ]; then
     builtin cd
