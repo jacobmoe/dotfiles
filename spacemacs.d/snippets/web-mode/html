@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>$1</title>
 
-  <link rel="stylesheet" type="text/css" href="$2"> -->
+  <link rel="stylesheet" type="text/css" href="$2">
   <link rel="shortcut icon" href="$3">
 </head>
 <body>

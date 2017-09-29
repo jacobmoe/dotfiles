@@ -136,7 +136,7 @@ set_docker_machine_from_file() {
 docker-compose() {
   if [ -e ".docker-machine" ]; then
     name=$(< .docker-machine)
-    indicator=$(docker-machine ls --filter name="$name" --format "{{.Active}}")
+    indicator="$(docker-machine ls --filter name="^$name$" --format "{{.Active}}")"
 
     if [ "$indicator" == "*" ]; then
       command docker-compose "$@"
