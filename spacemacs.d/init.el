@@ -53,7 +53,7 @@ values."
      restclient
      helm
 
-     protobuf ;; NOTE added this to .emacs.d. should come with future spacemacs
+     protobuf
      python
      emacs-lisp
      common-lisp
