@@ -59,7 +59,7 @@ source /usr/local/opt/chruby/share/chruby/chruby.sh
 # enable auto-switching:
 source /usr/local/opt/chruby/share/chruby/auto.sh
 
-chruby ruby-2.4.1 # set default ruby
+chruby ruby-2.6.1 # set default ruby
 
 # ---- golang ---------------------------------------------------------------
 
