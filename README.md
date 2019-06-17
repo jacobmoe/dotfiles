@@ -1,7 +1,7 @@
 ## Install
 
 ```bash
-cd ~ && git clone git@github.com:jacobmoe/dotfiles.git
+git clone git@github.com:jacobmoe/dotfiles.git
 
 # git
 
@@ -11,14 +11,16 @@ brew install git-completion
 # node
 
 brew install node
+npm install -g tern
 
 # emacs
 
-brew install emacs --HEAD --use-git-head --with-cocoa --srgb
-ln -s /usr/local/Cellar/emacs/HEAD/Emacs.app /Applications
+brew cask install emacs
+brew tap caskroom/fonts
+brew cask install font-source-code-pro
 brew install ag
 brew install ispell
-npm install -g eslint
+brew install eslint
 git clone https://github.com/syl20bnr/spacemacs $HOME/.emacs.d
 rm $HOME/.spacemacs
 
