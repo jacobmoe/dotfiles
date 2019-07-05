@@ -163,6 +163,11 @@ export CLASSPATH=$HOME/algs4/stdlib.jar:$HOME/algs4/slgs4.jar:$CLASSPATH
 
 # ---- path ----------------------------------------------------------------
 PATH="$HOME/bin:$PATH"
+
+# added by Miniconda3 installer
+export PATH="$HOME/miniconda3/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+
 export PATH
 
 set_docker_machine_from_file
