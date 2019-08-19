@@ -55,6 +55,27 @@ chruby ruby-2.4.6 # set default ruby
 
 export BUNDLER_EDITOR='emacs'
 
+# run sql on a mysql or postgres db without entering the mysql/psql console
+# usage:  db "select * from my_table"
+db() {
+  if [ ! -f ./config/database.yml ]; then
+    echo "only works from a rails project's root"
+    return
+  fi
+
+  read -a db_info <<< $(ruby -e '
+    require "yaml"
+    dev = YAML.load_file("config/database.yml")["development"]
+    puts [dev["adapter"], dev["database"], dev["username"]].join(" ")
+  ')
+
+  case ${db_info[0]} in
+    mysql2    ) mysql --database=${db_info[1]} --user=${db_info[2]} -e "$1";;
+    postgresql) psql ${db_info[1]} -c "$1";;
+    *         ) echo "only mysql2 and postgresql adapters are supported";;
+  esac
+}
+
 # ---- golang ---------------------------------------------------------------
 
 export GOPATH="$HOME/code/go"
@@ -82,67 +103,35 @@ export PATH="$HOME/miniconda3/bin:$PATH"
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# ---- postgres -------------------------------------------------------------
+# ---- docker ---------------------------------------------------------------
 
-# ---- aliases --------------------------------------------------------------
+set_docker_machine_from_file() {
+  if [ -e ".docker-machine" ]; then
+    machine_name=$(< .docker-machine)
 
-alias ll="ls -lahG"
-
-# ---- functions ------------------------------------------------------------
-
-# open man page in sublime
-sman() {
-  man "${1}" | col -b | subl
-}
-
-# run sql on a mysql or postgres db without entering the mysql/psql console
-# usage:  db "select * from my_table"
-db() {
-  if [ ! -f ./config/database.yml ]; then
-    echo "only works from a rails project's root"
-    return
+    if [ "$(docker-machine status $machine_name)" = "Running" ]; then
+      eval $(docker-machine env $machine_name)
+      echo "current docker-machine is $machine_name"
+    else
+      echo -e "docker-machine $machine_name is stopped"
+    fi
   fi
-
-  read -a db_info <<< $(ruby -e '
-    require "yaml"
-    dev = YAML.load_file("config/database.yml")["development"]
-    puts [dev["adapter"], dev["database"], dev["username"]].join(" ")
-  ')
-
-  case ${db_info[0]} in
-    mysql2    ) mysql --database=${db_info[1]} --user=${db_info[2]} -e "$1";;
-    postgresql) psql ${db_info[1]} -c "$1";;
-    *         ) echo "only mysql2 and postgresql adapters are supported";;
-  esac
 }
 
-# set_docker_machine_from_file() {
-#   if [ -e ".docker-machine" ]; then
-#     machine_name=$(< .docker-machine)
+docker-compose() {
+  if [ -e ".docker-machine" ]; then
+    name=$(< .docker-machine)
+    indicator="$(docker-machine ls --filter name="^$name$" --format "{{.Active}}")"
 
-#     if [ "$(docker-machine status $machine_name)" = "Running" ]; then
-#       eval $(docker-machine env $machine_name)
-#       echo "current docker-machine is $machine_name"
-#     else
-#       echo -e "docker-machine $machine_name is stopped"
-#     fi
-#   fi
-# }
-
-# docker-compose() {
-#   if [ -e ".docker-machine" ]; then
-#     name=$(< .docker-machine)
-#     indicator="$(docker-machine ls --filter name="^$name$" --format "{{.Active}}")"
-
-#     if [ "$indicator" == "*" ]; then
-#       command docker-compose "$@"
-#     else
-#       echo -e "current machine is $machine_name but it's not active."
-#     fi
-#   else
-#     command docker-compose "$@"
-#   fi
-# }
+    if [ "$indicator" == "*" ]; then
+      command docker-compose "$@"
+    else
+      echo -e "current machine is $machine_name but it's not active."
+    fi
+  else
+    command docker-compose "$@"
+  fi
+}
 
 # cd() {
 #   if [ $# -eq 0 ]; then
@@ -152,6 +141,14 @@ db() {
 #     set_docker_machine_from_file
 #   fi
 # }
+
+# ---- kubernetes -----------------------------------------------------------
+
+# ---- postgres -------------------------------------------------------------
+
+# ---- general --------------------------------------------------------------
+
+alias ll="ls -lahG"
 
 # ---- scripts ----------------------------------------------------------------
 
