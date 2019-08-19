@@ -144,6 +144,11 @@ docker-compose() {
 
 # ---- kubernetes -----------------------------------------------------------
 
+alias kdev="kubectl"
+alias kstaging="kubectl --kubeconfig $HOME/code/unite-us/ops/k8/configs/staging/config -n default"
+alias ktraining="kubectl --kubeconfig $HOME/code/unite-us/ops/k8/configs/training/config -n training"
+alias kproduction="kubectl --kubeconfig $HOME/code/unite-us/ops/k8/configs/production/config -n production"
+
 # ---- postgres -------------------------------------------------------------
 
 # ---- general --------------------------------------------------------------
