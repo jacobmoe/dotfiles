@@ -2,13 +2,6 @@
 
 homebrew=/usr/local/bin:/usr/local/sbin
 PATH=$homebrew:$PATH
-PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
-PATH="$PATH:/usr/local/mysql/bin"
-# export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
-
-# Default editor
-# export EDITOR='subl -w'
-export BUNDLER_EDITOR='emacs'
 
 # ---- colors ---------------------------------------------------------------
 
@@ -37,7 +30,6 @@ function parse_git_branch {
  echo "("${ref#refs/heads/}")"
 }
 
-# Make the GITs nice
 source /usr/local/etc/bash_completion.d/git-completion.bash
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
@@ -61,13 +53,12 @@ source /usr/local/opt/chruby/share/chruby/auto.sh
 
 chruby ruby-2.4.6 # set default ruby
 
+export BUNDLER_EDITOR='emacs'
+
 # ---- golang ---------------------------------------------------------------
 
-# export GOROOT="/usr/local/Cellar/go/1.8.3"
 export GOPATH="$HOME/code/go"
 PATH="$PATH:$GOPATH/bin"
-
-# [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
 # ---- lisp -----------------------------------------------------------------
 
@@ -85,12 +76,17 @@ export QUICKLISP_HOME="$HOME/quicklisp/"
 # export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 # source /usr/local/bin/virtualenvwrapper.sh
 
+export PATH="$HOME/miniconda3/bin:$PATH"
+
+# ---- rust -----------------------------------------------------------------
+
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # ---- postgres -------------------------------------------------------------
 
 # ---- aliases --------------------------------------------------------------
 
 alias ll="ls -lahG"
-alias em='open -a /Applications/Emacs.app "$@"'
 
 # ---- functions ------------------------------------------------------------
 
@@ -120,54 +116,47 @@ db() {
   esac
 }
 
-set_docker_machine_from_file() {
-  if [ -e ".docker-machine" ]; then
-    machine_name=$(< .docker-machine)
+# set_docker_machine_from_file() {
+#   if [ -e ".docker-machine" ]; then
+#     machine_name=$(< .docker-machine)
 
-    if [ "$(docker-machine status $machine_name)" = "Running" ]; then
-      eval $(docker-machine env $machine_name)
-      echo "current docker-machine is $machine_name"
-    else
-      echo -e "docker-machine $machine_name is stopped"
-    fi
-  fi
-}
+#     if [ "$(docker-machine status $machine_name)" = "Running" ]; then
+#       eval $(docker-machine env $machine_name)
+#       echo "current docker-machine is $machine_name"
+#     else
+#       echo -e "docker-machine $machine_name is stopped"
+#     fi
+#   fi
+# }
 
-docker-compose() {
-  if [ -e ".docker-machine" ]; then
-    name=$(< .docker-machine)
-    indicator="$(docker-machine ls --filter name="^$name$" --format "{{.Active}}")"
+# docker-compose() {
+#   if [ -e ".docker-machine" ]; then
+#     name=$(< .docker-machine)
+#     indicator="$(docker-machine ls --filter name="^$name$" --format "{{.Active}}")"
 
-    if [ "$indicator" == "*" ]; then
-      command docker-compose "$@"
-    else
-      echo -e "current machine is $machine_name but it's not active."
-    fi
-  else
-    command docker-compose "$@"
-  fi
-}
+#     if [ "$indicator" == "*" ]; then
+#       command docker-compose "$@"
+#     else
+#       echo -e "current machine is $machine_name but it's not active."
+#     fi
+#   else
+#     command docker-compose "$@"
+#   fi
+# }
 
-cd() {
-  if [ $# -eq 0 ]; then
-    builtin cd
-  else
-    builtin cd "$1"
-    set_docker_machine_from_file
-  fi
-}
+# cd() {
+#   if [ $# -eq 0 ]; then
+#     builtin cd
+#   else
+#     builtin cd "$1"
+#     set_docker_machine_from_file
+#   fi
+# }
 
-# ---- TEMP ----------------------------------------------------------------
-# for algorithms class library
-export CLASSPATH=$HOME/algs4/stdlib.jar:$HOME/algs4/slgs4.jar:$CLASSPATH
+# ---- scripts ----------------------------------------------------------------
 
-# ---- path ----------------------------------------------------------------
 PATH="$HOME/bin:$PATH"
-
-# added by Miniconda3 installer
-export PATH="$HOME/miniconda3/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
 
 export PATH
 
-set_docker_machine_from_file
+# set_docker_machine_from_file
