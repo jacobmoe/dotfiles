@@ -118,20 +118,20 @@ set_docker_machine_from_file() {
   fi
 }
 
-docker-compose() {
-  if [ -e ".docker-machine" ]; then
-    name=$(< .docker-machine)
-    indicator="$(docker-machine ls --filter name="^$name$" --format "{{.Active}}")"
+# docker-compose() {
+#   if [ -e ".docker-machine" ]; then
+#     name=$(< .docker-machine)
+#     indicator="$(docker-machine ls --filter name="^$name$" --format "{{.Active}}")"
 
-    if [ "$indicator" == "*" ]; then
-      command docker-compose "$@"
-    else
-      echo -e "current machine is $machine_name but it's not active."
-    fi
-  else
-    command docker-compose "$@"
-  fi
-}
+#     if [ "$indicator" == "*" ]; then
+#       command docker-compose "$@"
+#     else
+#       echo -e "current machine is $machine_name but it's not active."
+#     fi
+#   else
+#     command docker-compose "$@"
+#   fi
+# }
 
 # cd() {
 #   if [ $# -eq 0 ]; then
@@ -144,10 +144,12 @@ docker-compose() {
 
 # ---- kubernetes -----------------------------------------------------------
 
+export UUOPS="$HOME/code/unite-us/ops"
+
 alias kdev="kubectl"
-alias kstaging="kubectl --kubeconfig $HOME/code/unite-us/ops/k8/configs/staging/config -n default"
-alias ktraining="kubectl --kubeconfig $HOME/code/unite-us/ops/k8/configs/training/config -n training"
-alias kproduction="kubectl --kubeconfig $HOME/code/unite-us/ops/k8/configs/production/config -n production"
+alias kstaging="kubectl --kubeconfig $HOME/.kube/config.eks.staging -n default"
+alias ktraining="kubectl --kubeconfig $HOME/.kube/config.eks.training -n default"
+alias kproduction="kubectl --kubeconfig $HOME/.kube/config.eks.production -n default"
 
 # ---- postgres -------------------------------------------------------------
 
