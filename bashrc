@@ -51,7 +51,7 @@ source /usr/local/opt/chruby/share/chruby/chruby.sh
 # enable auto-switching:
 source /usr/local/opt/chruby/share/chruby/auto.sh
 
-chruby ruby-2.4.6 # set default ruby
+chruby ruby-2.4.10 # set default ruby
 
 export BUNDLER_EDITOR='emacs'
 
