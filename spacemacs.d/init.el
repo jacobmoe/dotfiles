@@ -65,7 +65,7 @@ This function should only modify configuration layer settings."
      go
 
      multiple-cursors
-     treemacs
+     (treemacs :variables treemacs-use-icons-dired nil)
 
      ;; my layers
      jmoe-funcs
