@@ -27,7 +27,7 @@ export GIT_PS1_SHOWUNTRACKEDFILES=true
 # https://medium.com/dev-genius/customize-the-macos-terminal-zsh-4cb387e4f447
 
 setopt PROMPT_SUBST
-PS1='%n %. %F{yellow}$(git_current_branch_name)%f %% '
+PS1='%n %~ %F{yellow}$(git_current_branch_name)%f %% '
 
 # ---- general --------------------------------------------------------------
 
