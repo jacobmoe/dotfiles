@@ -15,9 +15,9 @@ npm install -g tern
 
 # emacs
 
-brew cask install emacs
-brew tap caskroom/fonts
-brew cask install font-source-code-pro
+brew install --cask emacs
+brew tap homebrew/cask-fonts
+brew install --cask font-source-code-pro
 brew install ag
 brew install ispell
 brew install eslint
@@ -37,6 +37,7 @@ brew install ledger
 # link
 
 ln -s $HOME/dotfiles/spacemacs.d $HOME/.spacemacs.d
+ln -s $HOME/dotfiles/zshrc $HOME/.zshrc
 ln -s $HOME/dotfiles/bash_profile $HOME/.bash_profile
 ln -s $HOME/dotfiles/bashrc $HOME/.bashrc
 ln -s $HOME/dotfiles/atom $HOME/.atom
