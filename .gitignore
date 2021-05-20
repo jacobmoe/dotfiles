@@ -3,3 +3,4 @@ atom/packages/
 atom/.apm/
 atom/blob-store/
 spacemacs.d/.spacemacs.env
+secret/

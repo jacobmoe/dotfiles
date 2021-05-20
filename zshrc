@@ -22,6 +22,18 @@ function git_current_branch_name {
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 
+# ---- go ------------------------------------------------------------------
+
+export GOPATH="$HOME/go"
+PATH="$PATH:$GOPATH/bin"
+
+# ---- kafka ---------------------------------------------------------------
+# brew install librdkafka
+export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
+
+# for kafka dev from local with docker-compose, add to /etc/hosts
+# 127.0.0.1       localhost kafka
+
 # ---- prompt --------------------------------------------------------------
 
 # https://medium.com/dev-genius/customize-the-macos-terminal-zsh-4cb387e4f447
@@ -32,3 +44,7 @@ PS1='%n %~ %F{yellow}$(git_current_branch_name)%f %% '
 # ---- general --------------------------------------------------------------
 
 alias ll="ls -lahG"
+
+# ---- top secret setup -----------------------------------------------------
+
+source $HOME/dotfiles/secret/zshrc

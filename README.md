@@ -8,11 +8,6 @@ git clone git@github.com:jacobmoe/dotfiles.git
 brew install git
 brew install git-completion
 
-# node
-
-brew install node
-npm install -g tern
-
 # emacs
 
 brew install --cask emacs
@@ -24,11 +19,21 @@ brew install eslint
 git clone https://github.com/syl20bnr/spacemacs $HOME/.emacs.d
 rm $HOME/.spacemacs
 
+# go
+
+GO111MODULE=on go get -v golang.org/x/tools/gopls@latest
+
 # ruby
 
 brew install chruby
 brew install ruby-install
 ruby-install
+
+# node
+
+brew install node
+npm install -g tern
+
 
 # ledger
 
