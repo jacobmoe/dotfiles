@@ -34,6 +34,10 @@ export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
 # for kafka dev from local with docker-compose, add to /etc/hosts
 # 127.0.0.1       localhost kafka
 
+# ---- aws ---------------------------------------------------------------
+
+alias awslocal="aws --endpoint-url=http://localhost:4566"
+
 # ---- prompt --------------------------------------------------------------
 
 # https://medium.com/dev-genius/customize-the-macos-terminal-zsh-4cb387e4f447

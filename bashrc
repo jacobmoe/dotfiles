@@ -164,3 +164,4 @@ PATH="$HOME/bin:$PATH"
 export PATH
 
 # set_docker_machine_from_file
+. "$HOME/.cargo/env"
