@@ -8,3 +8,4 @@
 *\.restclient
 
 \.docker-machine
+\.editorconfig

@@ -29,7 +29,7 @@
        ;;deft              ; notational velocity for Emacs
        doom              ; what makes DOOM look the way it does
        doom-dashboard    ; a nifty splash screen for Emacs
-       doom-quit         ; DOOM quit-message prompts when you quit Emacs
+       ;; doom-quit         ; DOOM quit-message prompts when you quit Emacs
        ;;(emoji +unicode)  ; 🙂
        ;;fill-column       ; a `fill-column' indicator
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
@@ -87,8 +87,8 @@
        ;;ansible
        ;;debugger          ; FIXME stepping through code, to help you add bugs
        ;;direnv
-       ;;docker
-       ;;editorconfig      ; let someone else argue about tabs vs spaces
+       docker
+       editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
        ;;gist              ; interacting with github gists
@@ -134,7 +134,7 @@
        ;;(haskell +dante)  ; a language that's lazier than I am
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ; a language you can depend on
-       ;;json              ; At least it ain't XML
+       json                ; At least it ain't XML
        ;;(java +meghanada) ; the poster child for carpal tunnel syndrome
        javascript        ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB

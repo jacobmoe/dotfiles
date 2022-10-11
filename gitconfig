@@ -6,8 +6,8 @@
 # [mergetool "Kaleidoscope"]
 #   cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 #   trustexitcode = true
-[merge]
-  tool = Kaleidoscope
+# [merge]
+#   tool = Kaleidoscope
 # [difftool "Kaleidoscope"]
 #   cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool]
@@ -23,3 +23,9 @@
 	smudge = git-lfs smudge -- %f
 	required = true
 	process = git-lfs filter-process
+[init]
+	defaultBranch = main
+[url "https://${GITHUB_TOKEN}:x-oauth-basic@github.com/${GITHUB_ORG}"]
+	insteadOf = https://github.com/${GITHUB_ORG}
+[pull]
+	ff = only

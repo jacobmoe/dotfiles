@@ -55,3 +55,7 @@
 
 (setq
  projectile-project-search-path '("~/code/"))
+
+;; for some reason this needs to be called once before
+;; <TAB> can be used to toggle open directories with dired-subtree
+(dired-subtree-toggle)
