@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# contributor: jacobmoe <jacobmoe@gmail.com>
-# name : module.exports
-# key: mod
-# --
-module.exports = $0

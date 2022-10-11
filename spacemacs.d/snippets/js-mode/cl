@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# contributor: jacobmoe <jacobmoe@gmail.com>
-# name : console log
-# key: cl
-# --
-console.log($0)
