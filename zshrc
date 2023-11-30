@@ -1,5 +1,7 @@
 # -*- mode: sh -*-
 
+export PATH="$PATH:/usr/local/sbin"
+
 # ---- colors ---------------------------------------------------------------
 
 export CLICOLOR=1
@@ -25,14 +27,17 @@ export GIT_PS1_SHOWUNTRACKEDFILES=true
 # ---- go ------------------------------------------------------------------
 
 export GOPATH="$HOME/go"
-PATH="$PATH:$GOPATH/bin"
+export PATH="$PATH:$GOPATH/bin"
 
 # ---- kafka ---------------------------------------------------------------
 # brew install librdkafka
 export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
 
+# https://github.com/confluentinc/confluent-kafka-go/issues/675#issuecomment-985329526
+# export DOCKER_DEFAULT_PLATFORM=linux/amd64
+
 # for kafka dev from local with docker-compose, add to /etc/hosts
-# 127.0.0.1       localhost kafka
+# 127.0.0.1 localhost kafka
 
 # ---- aws ----------------------------------------------------------------
 

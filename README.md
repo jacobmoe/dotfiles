@@ -10,14 +10,12 @@ brew install git-completion
 
 # emacs
 
-brew install --cask emacs
+# brew install --cask emacs
+brew install emacs-plus --with-native-comp
 brew tap homebrew/cask-fonts
 brew install --cask font-source-code-pro
-brew install ag
+brew install fd
 brew install ispell
-brew install eslint
-git clone https://github.com/syl20bnr/spacemacs $HOME/.emacs.d
-rm $HOME/.spacemacs
 
 # go
 
@@ -41,7 +39,7 @@ brew install ledger
 
 # link
 
-ln -s $HOME/dotfiles/spacemacs.d $HOME/.spacemacs.d
+ln -s $HOME/dotfiles/doom.d $HOME/.doom.d
 ln -s $HOME/dotfiles/zshrc $HOME/.zshrc
 ln -s $HOME/dotfiles/bash_profile $HOME/.bash_profile
 ln -s $HOME/dotfiles/bashrc $HOME/.bashrc
@@ -50,4 +48,9 @@ ln -s $HOME/dotfiles/gitconfig $HOME/.gitconfig
 ln -s $HOME/dotfiles/eslintrc $HOME/.eslintrc
 ln -s $HOME/dotfiles/gitignore_global $HOME/.gitignore_global
 ln -s $HOME/dotfiles/ledgerrc $HOME/.ledgerrc
+
+# 1password
+
+# https://developer.1password.com/docs/cli/get-started/#install
+brew install --cask 1password/tap/1password-cli
 ```
